@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiana CR — Adopción responsable de mascotas</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+
+    <!-- ── Header ── -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🐾</div>
+                <span class="logo-text">Kiana<span>CR</span></span>
+            </a>
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.html" class="activo">Inicio</a></li>
+                    <li><a href="animales.html">Animales</a></li>
+                    <li><a href="registro.html">Adoptar</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ── Hero ── -->
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="hero-badge">🌿 Ye'Ki be'Kiana — Yo te quiero</span>
+                <h1>Dale un hogar a quien más<br><em>lo necesita</em></h1>
+                <p>En Costa Rica miles de perros y gatos esperan una segunda oportunidad. Kiana CR te conecta con
+                    animales rescatados que buscan amor y un hogar seguro.</p>
+                <a href="animales.html" class="btn-principal">🐶 Ver animales disponibles</a>
+            </div>
+        </section>
+
+        <!-- ── Estadísticas dinámicas desde JSON ── -->
+        <section class="stats-seccion">
+            <div class="contenedor">
+                <h2 class="seccion-titulo">Animales que necesitan tu ayuda</h2>
+                <p class="seccion-subtitulo">Datos actualizados de nuestra plataforma</p>
+                <div class="stats-grid" id="stats-grid">
+                    <!-- Generado con JavaScript desde animales.json -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Problema real ── -->
+        <section class="problema-seccion">
+            <div class="problema-grid">
+                <div class="problema-texto">
+                    <h2>¿Por qué existe Kiana CR?</h2>
+                    <p>El abandono de mascotas en Costa Rica es una crisis silenciosa. Miles de perros y gatos terminan
+                        en las calles o en refugios saturados cada año, mientras que muchas personas que desean adoptar
+                        no saben dónde buscar ni cómo iniciar el proceso.</p>
+                    <p>No existe una plataforma centralizada y accesible que conecte a las personas con los animales
+                        disponibles de manera organizada, con información clara y actualizada.</p>
+                    <button class="btn-toggle" id="btn-toggle" aria-expanded="false">
+                        <span id="toggle-icono">➕</span> Ver más información
+                    </button>
+                    <div class="info-extra" id="info-extra" role="region" aria-live="polite">
+                        <strong>¿Qué hace Kiana CR?</strong><br>
+                        Kiana CR centraliza la información de animales rescatados en Costa Rica. Podés buscar y filtrar
+                        por especie, tamaño y zona geográfica, marcar tus favoritos y registrar tu solicitud de adopción
+                        directamente desde la plataforma, sin necesidad de crear una cuenta.
+                    </div>
+                </div>
+                <div class="problema-visual">
+                    <div class="dato-item">
+                        <span class="dato-icono">🏠</span>
+                        <div class="dato-info">
+                            <strong>Refugios saturados</strong>
+                            <span>Los refugios en CR operan por encima de su capacidad</span>
+                        </div>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-icono">🐾</span>
+                        <div class="dato-info">
+                            <strong>Abandono constante</strong>
+                            <span>Cada semana ingresan nuevos animales a las calles</span>
+                        </div>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-icono">💙</span>
+                        <div class="dato-info">
+                            <strong>Adopción como solución</strong>
+                            <span>Adoptar reduce el abandono y salva vidas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Público objetivo ── -->
+        <section class="publico-seccion">
+            <div class="contenedor">
+                <h2 class="seccion-titulo">¿Para quién es Kiana CR?</h2>
+                <p class="seccion-subtitulo">Nuestra plataforma está diseñada para estas personas</p>
+                <div class="publico-grid">
+                    <div class="publico-card">
+                        <div class="publico-icono">👨‍👩‍👧</div>
+                        <h3>Familias adoptantes</h3>
+                        <p>Personas que desean agregar una mascota a su hogar de forma responsable y con información
+                            completa sobre cada animal.</p>
+                    </div>
+                    <div class="publico-card">
+                        <div class="publico-icono">🏡</div>
+                        <h3>Personas solas</h3>
+                        <p>Adultos que buscan compañía y están dispuestos a brindar amor y cuidado a un animal
+                            rescatado.</p>
+                    </div>
+                    <div class="publico-card">
+                        <div class="publico-icono">🤝</div>
+                        <h3>Organizaciones rescatadoras</h3>
+                        <p>Refugios y grupos rescatadores que necesitan visibilizar a sus animales y conectarlos con
+                            adoptantes responsables.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Donaciones ── -->
+        <section class="donaciones-seccion">
+            <div class="contenedor">
+                <div class="donaciones-grid">
+
+                    <!-- Lado izquierdo: info -->
+                    <div class="donaciones-info">
+                        <span class="donaciones-badge">💛 Hacé la diferencia</span>
+                        <h2>Tu donación salva vidas</h2>
+                        <p>Los refugios en Costa Rica necesitan recursos para alimentar, vacunar y esterilizar a los
+                            animales rescatados. Con tu aporte, ayudamos a que más animales encuentren un hogar.</p>
+                        <ul class="donaciones-lista">
+                            <li><span class="don-icono">🍖</span>
+                                <div><strong>₡1.000</strong><span>Alimenta a un animal por un día</span></div>
+                            </li>
+                            <li><span class="don-icono">💉</span>
+                                <div><strong>₡3.500</strong><span>Cubre una vacuna básica</span></div>
+                            </li>
+                            <li><span class="don-icono">🏥</span>
+                                <div><strong>₡10.000</strong><span>Apoya una esterilización</span></div>
+                            </li>
+                            <li><span class="don-icono">🏠</span>
+                                <div><strong>₡25.000</strong><span>Sostiene un refugio por una semana</span></div>
+                            </li>
+                        </ul>
+                        <div class="total-donado-wrap">
+                            <span class="total-donado-label">💚 Total donado desde esta sesión:</span>
+                            <span class="total-donado-monto" id="total-donado">₡0</span>
+                        </div>
+                    </div>
+
+                    <!-- Lado derecho: formulario donación -->
+                    <div class="donaciones-form-wrap">
+                        <div class="donaciones-card">
+                            <h3>Elegí tu aporte 🐾</h3>
+                            <p class="don-subtitulo">Seleccioná un monto o ingresá el tuyo</p>
+
+                            <!-- Montos rápidos -->
+                            <div class="montos-rapidos">
+                                <button class="btn-monto" data-monto="1000">₡1.000</button>
+                                <button class="btn-monto" data-monto="3500">₡3.500</button>
+                                <button class="btn-monto" data-monto="10000">₡10.000</button>
+                                <button class="btn-monto" data-monto="25000">₡25.000</button>
+                            </div>
+
+                            <!-- Monto personalizado -->
+                            <div class="campo-donacion">
+                                <label for="monto-personalizado">O ingresá un monto personalizado (mínimo ₡500)</label>
+                                <div class="input-colones">
+                                    <span class="simbolo-colon">₡</span>
+                                    <input type="number" id="monto-personalizado" placeholder="Ej: 5000" min="500"
+                                        aria-label="Monto personalizado de donación" />
+                                </div>
+                            </div>
+
+                            <!-- Alerta donación -->
+                            <div class="alerta-donacion" id="alerta-donacion" role="alert"></div>
+
+                            <button class="btn-donar" id="btn-donar" type="button">
+                                💚 Confirmar donación
+                            </button>
+
+                            <p class="don-nota">* Esta es una demostración. En un sistema real, se integraría con una
+                                pasarela de pagos como SINPE Móvil.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CTA ── -->
+        <section class="cta-seccion">
+            <h2>¿Listo para cambiar una vida? 🐾</h2>
+            <p>Encontrá al compañero perfecto para vos. La adopción es el acto de amor más grande que podés hacer.</p>
+            <a href="animales.html" class="btn-principal">Explorar animales disponibles →</a>
+        </section>
+
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer>
+        <p><strong>Kiana CR</strong> — Inspirado en la expresión bribri <em>Ye'Ki be'Kiana</em> · "Yo te quiero" 🐾</p>
+        <p style="margin-top:0.4rem; font-size:0.8rem;">ISW-521 Programación en Ambiente Web I · UTN Sede Central</p>
+    </footer>
+
+    <script src="js/sesion.js"></script>
+    <script src="js/inicio.js"></script>
+</body>
+
+</html>
