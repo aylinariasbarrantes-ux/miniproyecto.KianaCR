@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animales disponibles — Kiana CR</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+
+    <!-- ── Header ── -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🐾</div>
+                <span class="logo-text">Kiana<span>CR</span></span>
+            </a>
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="animales.html" class="activo">Animales</a></li>
+                    <li><a href="registro.html">Adoptar</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ── Hero ── -->
+        <section class="animales-hero">
+            <h1>🐾 Animales disponibles</h1>
+            <p>Buscá, filtrá y encontrá al compañero perfecto para tu vida</p>
+        </section>
+
+        <div class="contenedor">
+
+            <!-- ── Controles de búsqueda y filtros ── -->
+            <div class="controles">
+                <div class="busqueda-wrap">
+                    <span>🔍</span>
+                    <input type="text" id="buscador" placeholder="Buscar por nombre, zona o descripción..."
+                        aria-label="Buscar animales" />
+                </div>
+                <div class="filtros-wrap">
+                    <label for="filtro-especie">Especie:</label>
+                    <select id="filtro-especie" aria-label="Filtrar por especie">
+                        <option value="todos">Todos</option>
+                        <option value="perro">🐶 Perros</option>
+                        <option value="gato">🐱 Gatos</option>
+                    </select>
+
+                    <label for="filtro-tamaño">Tamaño:</label>
+                    <select id="filtro-tamaño" aria-label="Filtrar por tamaño">
+                        <option value="todos">Todos</option>
+                        <option value="pequeño">Pequeño</option>
+                        <option value="mediano">Mediano</option>
+                        <option value="grande">Grande</option>
+                    </select>
+
+                    <label for="filtro-zona">Zona:</label>
+                    <select id="filtro-zona" aria-label="Filtrar por zona">
+                        <option value="todos">Todas</option>
+                        <option value="San José">San José</option>
+                        <option value="Heredia">Heredia</option>
+                        <option value="Alajuela">Alajuela</option>
+                        <option value="Cartago">Cartago</option>
+                        <option value="Liberia">Liberia</option>
+                    </select>
+                </div>
+                <span class="contador-resultados" id="contador">Cargando...</span>
+            </div>
+
+            <!-- ── Grid de animales ── -->
+            <div class="animales-grid" id="animales-grid">
+                <!-- Generado con JavaScript desde animales.json -->
+            </div>
+
+            <!-- ── Estado vacío ── -->
+            <div class="estado-vacio" id="estado-vacio">
+                <div class="icono">🔍</div>
+                <h3>No encontramos animales</h3>
+                <p>Intentá con otros filtros o borrá la búsqueda para ver todos los animales.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer>
+        <p><strong>Kiana CR</strong> — Inspirado en la expresión bribri <em>Ye'Ki be'Kiana</em> · "Yo te quiero" 🐾</p>
+        <p style="margin-top:0.4rem; font-size:0.8rem;">ISW-521 Programación en Ambiente Web I · UTN Sede Central</p>
+    </footer>
+
+    <script src="js/sesion.js"></script>
+    <script src="js/animales.js"></script>
+</body>
+
+</html>
