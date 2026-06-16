@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar sesión — Kiana CR</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--rosa) 0%, var(--papaya) 40%, var(--amarillo) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 440px;
+            animation: aparecer 0.5s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .login-logo .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--rosa-deep), var(--papaya-deep));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            box-shadow: 0 4px 16px rgba(255, 133, 161, 0.4);
+        }
+
+        .login-logo .logo-text {
+            font-family: var(--font-titulo);
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--gris-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .login-logo .logo-text span {
+            color: var(--rosa-deep);
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            padding: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-titulo);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transicion);
+            background: transparent;
+            color: var(--gris-texto);
+        }
+
+        .tab-btn.activo {
+            background: var(--blanco);
+            color: var(--gris-dark);
+            box-shadow: 0 2px 8px var(--sombra);
+        }
+
+        .login-card {
+            background: var(--blanco);
+            border-radius: var(--radius);
+            padding: 2.4rem 2rem;
+            box-shadow: 0 12px 40px rgba(180, 140, 160, 0.25);
+        }
+
+        .panel {
+            display: none;
+        }
+
+        .panel.activo {
+            display: block;
+            animation: aparecer 0.3s ease;
+        }
+
+        .login-card h2 {
+            font-family: var(--font-titulo);
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--gris-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .subtitulo {
+            color: var(--gris-texto);
+            font-size: 0.88rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .campo {
+            margin-bottom: 1.1rem;
+        }
+
+        .campo label {
+            display: block;
+            font-family: var(--font-titulo);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--gris-texto);
+            margin-bottom: 0.4rem;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap .icono-campo {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 0.78rem 1rem 0.78rem 2.8rem;
+            border: 2px solid #e8e0e8;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transicion);
+            background: var(--gris-claro);
+        }
+
+        .campo input:focus {
+            border-color: var(--rosa-deep);
+            background: var(--blanco);
+        }
+
+        .campo input.valido {
+            border-color: var(--verde-deep);
+        }
+
+        .campo input.invalido {
+            border-color: #ff6b8a;
+        }
+
+        .btn-ojo {
+            position: absolute;
+            right: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.2rem;
+        }
+
+        .mensaje-error {
+            display: none;
+            font-size: 0.78rem;
+            color: #e05070;
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        .mensaje-error.visible {
+            display: block;
+        }
+
+        .opciones-fila {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.4rem;
+            font-size: 0.85rem;
+        }
+
+        .opciones-fila label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--gris-texto);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .opciones-fila input[type="checkbox"] {
+            accent-color: var(--rosa-deep);
+            width: 15px;
+            height: 15px;
+        }
+
+        .link-texto {
+            color: var(--rosa-deep);
+            font-weight: 700;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: var(--font-body);
+        }
+
+        .link-texto:hover {
+            text-decoration: underline;
+        }
+
+        .btn-accion {
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-titulo);
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transicion);
+            color: var(--blanco);
+            background: linear-gradient(135deg, var(--rosa-deep), var(--papaya-deep));
+            box-shadow: 0 4px 16px rgba(255, 133, 161, 0.35);
+        }
+
+        .btn-accion:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-accion.verde {
+            background: linear-gradient(135deg, var(--verde-deep), var(--azul-deep));
+        }
+
+        .alerta-auth {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-titulo);
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+            margin-bottom: 0;
+        }
+
+        .alerta-auth.error {
+            background: #ffe0e6;
+            color: #c0334d;
+            padding: 0.85rem 1rem;
+            max-height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .alerta-auth.exito {
+            background: var(--verde);
+            color: var(--gris-dark);
+            padding: 0.85rem 1rem;
+            max-height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .fuerza-wrap {
+            margin-top: 0.4rem;
+        }
+
+        .fuerza-barra {
+            height: 4px;
+            border-radius: 4px;
+            background: #e8e0e8;
+            overflow: hidden;
+            margin-bottom: 0.25rem;
+        }
+
+        .fuerza-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .fuerza-label {
+            font-size: 0.75rem;
+            color: var(--gris-texto);
+            font-weight: 600;
+        }
+
+        .badge-bribri {
+            text-align: center;
+            margin-top: 1.8rem;
+            font-size: 0.8rem;
+            color: rgba(61, 61, 85, 0.6);
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-wrapper">
+        <a href="index.html" class="login-logo">
+            <div class="logo-icon">🐾</div>
+            <span class="logo-text">Kiana<span>CR</span></span>
+        </a>
+        <div class="tabs">
+            <button class="tab-btn activo" id="tab-login" type="button">Iniciar sesión</button>
+            <button class="tab-btn" id="tab-registro" type="button">Crear cuenta</button>
+        </div>
+        <div class="login-card">
+
+            <!-- PANEL LOGIN -->
+            <div class="panel activo" id="panel-login">
+                <h2>¡Bienvenida de vuelta! 🐾</h2>
+                <p class="subtitulo">Ingresá con tu correo y contraseña</p>
+                <div class="alerta-auth" id="alerta-login" role="alert"></div>
+                <div class="campo">
+                    <label for="login-correo">Correo electrónico</label>
+                    <div class="input-wrap">
+                        <span class="icono-campo">📧</span>
+                        <input type="email" id="login-correo" placeholder="tucorreo@ejemplo.com" autocomplete="email" />
+                    </div>
+                    <span class="mensaje-error" id="err-login-correo" role="alert">Ingresá un correo válido.</span>
+                </div>
+                <div class="campo">
+                    <label for="login-contrasena">Contraseña</label>
+                    <div class="input-wrap">
+                        <span class="icono-campo">🔒</span>
+                        <input type="password" id="login-contrasena" placeholder="Tu contraseña"
+                            autocomplete="current-password" />
+                        <button class="btn-ojo" id="ojo-login" type="button"
+                            aria-label="Mostrar contraseña">👁️</button>
+                    </div>
+                    <span class="mensaje-error" id="err-login-contrasena" role="alert">La contraseña debe tener al menos
+                        6 caracteres.</span>
+                </div>
+                <div class="opciones-fila">
+                    <label><input type="checkbox" id="recordar" /> Recordarme</label>
+                    <button class="link-texto" id="btn-olvide" type="button">¿Olvidaste tu contraseña?</button>
+                </div>
+                <button class="btn-accion" id="btn-login" type="button">🐾 Iniciar sesión</button>
+            </div>
+
+            <!-- PANEL REGISTRO -->
+            <div class="panel" id="panel-registro">
+                <h2>Creá tu cuenta 🌿</h2>
+                <p class="subtitulo">Registrate para guardar favoritos y solicitudes</p>
+                <div class="alerta-auth" id="alerta-registro" role="alert"></div>
+                <div class="campo">
+                    <label for="reg-nombre">Nombre completo</label>
+                    <div class="input-wrap">
+                        <span class="icono-campo">👤</span>
+                        <input type="text" id="reg-nombre" placeholder="Ej: María González" autocomplete="name" />
+                    </div>
+                    <span class="mensaje-error" id="err-reg-nombre" role="alert">Ingresá tu nombre completo (mínimo 3
+                        caracteres).</span>
+                </div>
+                <div class="campo">
+                    <label for="reg-correo">Correo electrónico</label>
+                    <div class="input-wrap">
+                        <span class="icono-campo">📧</span>
+                        <input type="email" id="reg-correo" placeholder="tucorreo@ejemplo.com" autocomplete="email" />
+                    </div>
+                    <span class="mensaje-error" id="err-reg-correo" role="alert">Ingresá un correo válido.</span>
+                    <span class="mensaje-error" id="err-reg-correo-dup" role="alert">Este correo ya está
+                        registrado.</span>
+                </div>
+                <div class="campo">
+                    <label for="reg-contrasena">Contraseña</label>
+                    <div class="input-wrap">
+                        <span class="icono-campo">🔒</span>
+                        <input type="password" id="reg-contrasena" placeholder="Mínimo 6 caracteres"
+                            autocomplete="new-password" />
+                        <button class="btn-ojo" id="ojo-reg" type="button" aria-label="Mostrar contraseña">👁️</button>
+                    </div>
+                    <div class="fuerza-wrap">
+                        <div class="fuerza-barra">
+                            <div class="fuerza-fill" id="fuerza-fill"></div>
+                        </div>
+                        <span class="fuerza-label" id="fuerza-label"></span>
+                    </div>
+                    <span class="mensaje-error" id="err-reg-contrasena" role="alert">La contraseña debe tener al menos 6
+                        caracteres.</span>
+                </div>
+                <div class="campo">
+                    <label for="reg-confirmar">Confirmar contraseña</label>
+                    <div class="input-wrap">
+                        <span class="icono-campo">🔒</span>
+                        <input type="password" id="reg-confirmar" placeholder="Repetí tu contraseña"
+                            autocomplete="new-password" />
+                    </div>
+                    <span class="mensaje-error" id="err-reg-confirmar" role="alert">Las contraseñas no coinciden.</span>
+                </div>
+                <button class="btn-accion verde" id="btn-registrar" type="button">✨ Crear cuenta</button>
+            </div>
+
+        </div>
+        <p class="badge-bribri">🌿 <em>Ye'Ki be'Kiana</em> — "Yo te quiero" en bribri</p>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
