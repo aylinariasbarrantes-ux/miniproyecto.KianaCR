@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solicitud de adopción — Kiana CR</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+
+    <!-- ── Header ── -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🐾</div>
+                <span class="logo-text">Kiana<span>CR</span></span>
+            </a>
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="animales.html">Animales</a></li>
+                    <li><a href="registro.html" class="activo">Adoptar</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ── Hero ── -->
+        <section class="registro-hero">
+            <h1>🏠 Solicitud de adopción</h1>
+            <p>Completá el formulario y te contactaremos pronto para continuar el proceso</p>
+        </section>
+
+        <div class="registro-layout">
+
+            <!-- ── Formulario ── -->
+            <section aria-labelledby="titulo-form">
+                <div class="form-card">
+                    <h2 id="titulo-form">📋 Tus datos</h2>
+
+                    <div class="campo">
+                        <label for="nombre">Nombre completo *</label>
+                        <input type="text" id="nombre" placeholder="Ej: María González Pérez" aria-required="true" />
+                        <span class="mensaje-error" id="error-nombre" role="alert">Por favor ingresá tu nombre
+                            completo.</span>
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefono">Número de teléfono *</label>
+                        <input type="tel" id="telefono" placeholder="Ej: 8888-8888" aria-required="true" />
+                        <span class="mensaje-error" id="error-telefono" role="alert">Ingresá un número de teléfono
+                            válido (8 dígitos).</span>
+                    </div>
+
+                    <div class="campo">
+                        <label for="correo">Correo electrónico *</label>
+                        <input type="email" id="correo" placeholder="Ej: maria@correo.com" aria-required="true" />
+                        <span class="mensaje-error" id="error-correo" role="alert">Ingresá un correo electrónico
+                            válido.</span>
+                    </div>
+
+                    <div class="campo">
+                        <label for="animal">Animal de interés *</label>
+                        <input type="text" id="animal" placeholder="Ej: Mango, Luna, Coco..." aria-required="true" />
+                        <span class="mensaje-error" id="error-animal" role="alert">Indicá el nombre del animal que te
+                            interesa adoptar.</span>
+                    </div>
+
+                    <div class="campo">
+                        <label for="vivienda">Tipo de vivienda *</label>
+                        <select id="vivienda" aria-required="true">
+                            <option value="">Seleccioná una opción</option>
+                            <option value="Casa con jardín">Casa con jardín</option>
+                            <option value="Casa sin jardín">Casa sin jardín</option>
+                            <option value="Apartamento">Apartamento</option>
+                        </select>
+                        <span class="mensaje-error" id="error-vivienda" role="alert">Por favor seleccioná tu tipo de
+                            vivienda.</span>
+                    </div>
+
+                    <div class="campo">
+                        <label for="mensaje">Mensaje adicional (opcional)</label>
+                        <textarea id="mensaje"
+                            placeholder="Contanos un poco sobre vos y por qué querés adoptar..."></textarea>
+                    </div>
+
+                    <div class="form-acciones">
+                        <button class="btn-enviar" id="btn-enviar" type="button">💙 Enviar solicitud</button>
+                        <button class="btn-limpiar" id="btn-limpiar" type="button">🗑️ Limpiar</button>
+                    </div>
+
+                    <div class="alerta" id="alerta-form" role="alert"></div>
+                </div>
+            </section>
+
+            <!-- ── Panel de solicitudes ── -->
+            <section aria-labelledby="titulo-solicitudes">
+                <div class="solicitudes-panel">
+                    <div class="solicitudes-header">
+                        <h2 id="titulo-solicitudes">
+                            📂 Mis solicitudes
+                            <span class="badge-contador" id="contador-solicitudes">0</span>
+                        </h2>
+                        <button class="btn-limpiar-todo" id="btn-limpiar-todo" type="button">🗑️ Limpiar todo</button>
+                    </div>
+
+                    <div id="lista-solicitudes">
+                        <!-- Generado con JavaScript desde localStorage -->
+                    </div>
+
+                    <div class="sin-solicitudes" id="sin-solicitudes">
+                        <div class="icono">📭</div>
+                        <p>Todavía no tenés solicitudes registradas.<br>¡Completá el formulario para comenzar!</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer>
+        <p><strong>Kiana CR</strong> — Inspirado en la expresión bribri <em>Ye'Ki be'Kiana</em> · "Yo te quiero" 🐾</p>
+        <p style="margin-top:0.4rem; font-size:0.8rem;">ISW-521 Programación en Ambiente Web I · UTN Sede Central</p>
+    </footer>
+
+    <script src="js/sesion.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+
+</html>
